@@ -20,3 +20,24 @@
  --Veri Tipleri
  --Tam sayı veri tipleri
  --bigint(-2^63 ile 2^63 arasında, 8byte, int (-2 milyar ile +2 milyar arasında, 4 byte yer kaplar),smallint (-2^15 ile 2^15, 2 byte) , tinyint (0 ile 255, 1byte), bit(0 ya da 1, 1 veya 2 byte)
+
+--Metin veri tipleri
+ --char (örneğin char50 ise ne yazarsak yazalım hafızada 50 karakterlik yer tutar) , varchar, nchar, nvarchar
+ --uzunluğu sabit olan tc,tel no gibi durumlarda char kullanabiliriz. Fakat isim,email,adres gibi uzunluğu belli olmayan yapılarda varchar kullanmak uygundur.
+--özgeçmiş gibi çok uzun verileri tutmak için varcharmax kullanılabilir
+
+--ondalık sayı veri tipleri
+--float (virgül ile birlikte toplam 18 karakter tutabilir), decimal (18,4 ise örneğin 18 karakter virgülden sonra 4 karakter tutabilir),money,real,smallmoney
+
+--tarihsaat veritipleri
+--datetime (1753-9999 yılı), datetime2 (mikrosaniye seviyesinde daha hassas süre),datetimeoffset (yerel saat ile ilgilidir),time,date (9999 yılına kadardır 4 byte yer kaplar), smalldate(1900-2079 arası 3 byte yer kaplar)
+
+--diğer veritipleri
+--image (veritabanında dosya tutmak için, eski sürümdür şuanda varbinarymax kullanılır)
+--binary,varbinary,varbinarymax binary şeklindeki yapıları tutmak için kullanılır herhangi bir dosya verisini veritabanında tutmak için kullanılır.)
+--xml sorgulanabilir veriler için, table
+--uniqueidentifier:tekilliği sağlamak amacıyla kullanılır. select NEWID scriptini çalıştırdığımızda GUID (global olarak tekilliği garanti eder) veri oluşturur.
+--hierarchyid:hiyerarşik pozisyonları temsil etmek için.
+--geography:dünyadaki koordinat sistemini tutar.
+--geometry:çeşitli 2 boyutlu geometrik şekilleri vektör olarak veritabanında tutmak için alan yer hesaplamada kullanılır.
+
