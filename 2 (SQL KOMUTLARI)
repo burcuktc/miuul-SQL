@@ -1,0 +1,80 @@
+--SQL KOMUTLARI
+--Data Manipülasyon Komutları
+--Select,Insert,Update,Delete,Truncate
+
+--Veritabanı Manipülasyon Komutları
+--Create, Alter,Drop
+
+--Select:Veritabanındaki tablolardan kayıtları seçer.
+--Insert:Tabloya yeni kayıt ekler.
+--Update:Tablodaki verilerin bir ya da birden çok kolonunu değiştirir.
+--Delete:Tablodan kayıt siler.
+--Truncate:Tablonun içini boşaltır. 
+
+--Create:Bir veri tabanı nesnesini oluşturur.(table,database,view..)
+--alter:veri tabanı nesnesinin bir özelliğini değiştirir.
+--drop:bir veri tabanı nesnesini siler.
+
+--SELECT 
+--SELECT KOLON1,KOLON2.. FROM TABLOADI WHERE ŞARTLAR
+
+
+--INSERT
+--INSERT INTO TABLOADI(KOLON1,KOLON2,..) VALUES (DEGER1,DEGER2,...)
+
+--update
+--UPDATE TABLOADI SET KOLON1=DEĞER1, KOLON2=DEĞER2 WHERE ŞARTLAR
+--yaş hesaplama: UPDATE CUSTOMERS SET AGE=DATEDIFF(YEAR,1990-12-12,getdate())
+
+--DELETE
+--DELETE FROM TABLO WHERE ŞARTLAR
+
+--TRUNCATE
+--Tabloyu ilk oluşturduğumuz haline çevirir.
+*--TRUNCATE TABLE TABLOADI
+--Tabloyu delete ile sildiğimizde otomatik artan bir değer varsa (ID gibi) otomatik artan değer yeni kayıt eklediğimizde kaldığı yerden devam ediyor. Ancak truncate ile sildiğimizde 1den başlıyor.
+
+--where
+-- =: eşittir
+-- <>: eşit değildir
+-- >=:büyük eşit
+-- BETWEEN: arasında örneğin select * from customers where bırthdate between '1980-01-01' and '1990-01-01'
+-- LIKE:ile başlar ile biter içerir örneğin ömer olanları getir select * from customers where namesurname like '%omer%', a ile başlayanlar where namesurname like 'a%'
+-- IN:içindedir örneğin şehri ankara istanbul veya izmir olanları getir select * from customers where city ın ('Ankara','İstanbul','İzmir')
+-- NOT LIKE:ile başlamaz ile bitmez içermez
+-- NOT IN:içinde değildir
+
+--örnek: UPDATE CSTOMERS SET AGEGROUP='20-30YAŞ ARASI'WHERE AGE BETWEEN 20 AND 30
+--tel numarası 55 ile başlayanlar x operatörü olsun: UPDATE CUSTOMERS SET TELOPERATOR1='X OPERATORU' WHERE TELNR1 LIKE '(55%'
+
+--DISTINCT:Tekrar eden verileri tekilleştirmek için kullanılır.
+--SELECT DISTINCT KOLON1,KOLON2,.. FROM TABLO ADI WHERE ŞARTLAR
+--Örneğin trnin hangi şehirlerinden müşterim var select distinct city from customers
+--istanbulun hangi ilçelerinden müşterim var SELECT DISTINCT DISTRICT FROM CUSTOMERS WHERE CITY='ISTANBUL'
+
+--select KOLON1,KOLON2 FROM TABLOADI WHERE ŞARTLAR ORDER BY KOLON1 ASC,KOLON2 DESC
+
+--TOP:SQL sorgusundan belirli sayıda veya yüzdede kayıt döndürme
+--en çok satış yapan 10 ürün
+--select top 10 KOLON1,KOLON2 FROM TABLOADI WHERE ŞARTLAR ORDER BY KOLON1 ASC,KOLON2 DESC
+--örnek:istanbul'daki en genç 10 erkek select top 10 * from customers where city='İSTANBUL' AND GENDER='E' ORDER BY BIRTHDATE DESC
+-- Yüzde 10unu getirmek istersek select top 10 percent 
+
+--CREATE
+--CREATE TABLE TABLOADI (KOLON1 TİP1,KOLON2 TİP2,...)
+--ÖR: create table customers2 (
+--ID INT IDENTITY(1,1) PRIMARY KEY,TCNUMBER VARCHAR(11) NOT NULL, GENDER VARCHAR1,BIRTHDATE DATE, CITY VARCHAR(50)
+--)
+
+--ALTER TABLE TABLOADI ADD COLUMN
+--ALTER TABLE TABLOADI ALTER COLUMN
+--ALTER TABLE TABLOADI DROP COLUMN
+--ALTER TABLE TABLOADI ADD CONSTRAINT
+--ALTER TABLE TABLOADI DROP CONSTRAINT
+
+--ÖRN:ALTER TABLE CUSTOMERS2 ADD COUNTRY VARCHAR(50)
+--ALTER TABLE CUSTOMERS2 DROP COLUMN COUNTRY VARCHAR(50)
+--ALTER TABLE CUSTOMERS2 ALTER COLUMN GENDER VARCHAR(10)
+--ALTER TABLE CUSTOMERS2 ADD CONSTRAINT PK_CUSTOMERS2 PRIMARY KEY (ID), ID ALANI PRIMARY KEY YAPILDI
+
+--DROP TABLE TABLENAME
